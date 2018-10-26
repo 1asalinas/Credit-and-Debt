@@ -1,0 +1,66 @@
+//Calculates the total payment based on one payment.
+function simpleInterest(balance, interest) {
+    return balance + (balance * interest);
+}
+
+
+//Anual yearly percent
+//Calculates the sub-interest to be accumulated each period to equal the total interest.
+function ayp(interest, period) {
+    return Math.pow(1 + interest, 1 / period) - 1;
+}
+
+
+
+
+
+//This calculates the total cost of paying off a credit card balance.
+//first pay off all of the principle
+//build a side stack of interest money
+//pay off the interest money. 
+function payCreditCard(balance, interest, payment) {
+    let principle = balance;
+    let interestPaid = 0;
+
+    while (balance > payment) {
+        balance = balance - payment;
+        interestPaid = interestPaid + balance * ayp(interest, 12);
+    }
+
+    interestPaid = interestPaid + principle;
+
+    return interestPaid;
+}
+
+
+
+
+//introduces a 4th variable which allows you to delay/defer interest payments for a while.
+//case 1: you pay off everything before the interest kicks in.
+//case 2: you pay off some, and then pass the rest of the work to the credit card function because it is the same problem at this point.  why re-program something that works.
+function payLoan(balance, interest, payment, defer) {
+    let principle = balance;
+    let offset = payment * defer;
+
+    if (offset >= principle) {
+        return principle;
+    }
+    else {
+        let newbalance = principle - (payment * defer);
+        return offset + payCreditCard(newbalance, interest, payment);
+    }
+
+}
+
+console.log(simpleInterest());
+console.log(ayp(0.1899,12));
+console.log(payCreditCard(3570,0.1899,110));
+console.log(payLoan(385000,0.04,1069.44,120));
+console.log(payLoan(385000,0.052,1069.44,180));
+console.log(payLoan(385000,0.029,1069.44,0));
+
+
+
+/***************************** Write some logs **********************************/
+/****************************to see some results*********************************/
+
