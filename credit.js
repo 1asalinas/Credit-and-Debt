@@ -52,12 +52,19 @@ function payLoan(balance, interest, payment, defer) {
 
 }
 
-console.log(simpleInterest());
+
 console.log(ayp(0.1899,12));
-console.log(payCreditCard(3570,0.1899,110));
+console.log(payLoan(3570,0.1899,210,12));
+console.log(payCreditCard(3570,0.1545,210));
+console.log(payLoan(3570,0.1545,210,4));
+console.log("----------------------------------------")
 console.log(payLoan(385000,0.04,1069.44,120));
 console.log(payLoan(385000,0.052,1069.44,180));
 console.log(payLoan(385000,0.029,1069.44,0));
+console.log("----------------------------------------")
+console.log(payLoan(295000,0.04,1069.44,120));
+console.log(payLoan(265000,0.052,1069.44,180));
+console.log(payLoan(345000,0.029,1069.44,0));
 
 
 
